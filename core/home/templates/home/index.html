@@ -1,0 +1,34 @@
+{% extends "base.html"%}
+{% block start %}
+<body>
+    <h1>This Template is return by Django Server</h1>
+    <table class="container">
+        <tr>
+          <th>S.No</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Can Vote</th>
+        </tr>
+        <tr>
+            {% for people in peoples %}
+          <td>{{forloop.counter}}</td>
+          <td>{{people.name}}</td>
+          <td>{{people.age}}</td>
+          <td>{% if people.age >= 18%}
+          👍
+          {%else %}
+          👎
+        {% endif%}</td>
+        </tr>
+        <tr>
+            {% endfor %}
+      </table>
+      <p>
+        {% if "pineapple" in vegetable%}
+        Yes available
+        {% elif "tomato" in vegetable%}
+        Not available
+        {% endif %}
+      </p>
+      {{vegetable.firstof}}
+{% endblock %}
